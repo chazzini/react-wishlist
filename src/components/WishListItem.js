@@ -27,7 +27,7 @@ import PropType from 'prop-types';
                         fontSize:"1rem",color:"white",
                     }} />
                 </button> &nbsp;
-                    <a href="{item.link}" target="_blank" className="btn btn-dark">
+                    <a href={item.link} target="_blank" className="btn btn-dark">
                     <FontAwesomeIcon icon={faEye} style={{
                         fontSize:"1rem",color:"white",
                     }} />
@@ -37,7 +37,7 @@ import PropType from 'prop-types';
             </div>
             </div> 
         </li>))
-  }
+  }m
   { (props.items.length <= 0) && <li className="list-group-item"> No Item found.</li>}
     </ul>
   );
