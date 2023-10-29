@@ -6,7 +6,7 @@ import PropType from 'prop-types';
 
  const WishListItem = (props) => {
 
-    console.log(props);
+   
 
     return (
         <ul className="list-group shadow">

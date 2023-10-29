@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState,useEffect} from "react";
 import WishListItem from "./WishListItem";
 import Modal from "react-modal";
 
@@ -15,46 +15,16 @@ export default (props)=>{
     const [itemImagePath, setItemImagePath] = useState("");
     const [itemPrice, setItemPrice] = useState(0);
 
-    const [items,setItems] = useState(
-  [
-        {
-            id:1,
-            itemname:"Haier Thermocool 146 Litres Chest Freezer (HTF-150) - Silver + 3 Years Warranty",
-            imagepath: "https://ng.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/36/7813011/1.jpg?5779",
-            description:`150 Liters capacity (146 liters Storage Volume)
-            Dimension (W*D*H) - 720*520*845
-            Super Freezing
-            Anti-rust protected
-            LED light
-            Safety door lock
-            Low noise operation
-            75mm insulation thickness`,
-            price:180000,
-            saved: 0,
-            link:"https://www.jumia.com.ng/haier-thermocool-146-litres-chest-freezer-htf-150-silver-3-years-warranty-110318763.html",
-        },
-        {
-            id:2,
-            itemname:"EuroMedica Berberine 500mg Metabolic Support",
-            imagepath: "https://ng.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/25/7273062/1.jpg?0824",
-            description:`When you need support for overall metabolic health, including healthy blood sugar, cholesterol, and triglyceride levels†, try Berberine 500 mg.* Each capsule delivers 500 mg of berberine, a compound well-known by traditional practice and modern science to support a variety of benefits, including:
-            Metabolic Function
-            Healthy Blood Sugar Levels†
-            Intestinal Support
-            Cardiovascular Health*
-            Clinically Studied Dose`,
-            price:12000,
-            saved: 0,
-            link:"https://www.jumia.com.ng/generic-euromedica-berberine-500mg-metabolic-support-260372752.html",
-        }
-    ]);
+
+   
+
+    const [items,setItems] = useState([]);
     
-    const addItem = ()=>{
+    const handleAddItem = ()=>{
         if(!itemDetail || !itemImagePath || !itemLink || !itemPrice || !itemName){
             return;
         }
-
-        setItems([
+        let newItems =[
             ...items, {
                 id:Date.now().toString(36),
                 itemname:itemName,
@@ -64,10 +34,11 @@ export default (props)=>{
                 saved: 0,
                 link:itemLink,
             }
-        ])
+        ]
+        setItems(newItems)
         // add items to localstorage 
 
-        localStorage.setItem("items", JSON.stringify(items));
+        localStorage.setItem("items", JSON.stringify(newItems));
         resetModal();
         closeModal();
     }
@@ -81,6 +52,10 @@ export default (props)=>{
             }
         })
         setItems([ ...newItems]);
+
+        //updating local storage
+        localStorage.setItem("items", JSON.stringify(newItems));
+
     }
 
     function openModal() {
@@ -101,7 +76,10 @@ export default (props)=>{
 
       }
 
-
+      useEffect(() => {
+        console.log(JSON.parse(localStorage.getItem('items')));
+        setItems( JSON.parse(localStorage.getItem('items')));
+      }, []);
 
     return (
     <div className="row">
@@ -165,7 +143,7 @@ export default (props)=>{
       </div>
       <div className="modal-footer ">
         <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" onClick={closeModal}>Close</button> &nbsp;
-        <button type="button" className="btn btn-dark" onClick={addItem}>Add</button>
+        <button type="button" className="btn btn-dark" onClick={handleAddItem}>Add</button>
       </div>
     </div>
   </div>
