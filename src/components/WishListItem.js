@@ -10,7 +10,7 @@ import PropType from 'prop-types';
 
     return (
         <ul className="list-group shadow">
-    {props.items.map((item)=> (
+    { props.items.map((item)=> (
         <li className="list-group-item" key={item.id}>
             <div className="media align-items-lg-center flex-column flex-lg-row p-3">
             <img src={item.imagepath} alt={item.itemname} width="100" className="ml-lg-5 order-1 order-lg-2" />
@@ -37,7 +37,7 @@ import PropType from 'prop-types';
             </div>
             </div> 
         </li>))
-  }m
+  }
   { (props.items.length <= 0) && <li className="list-group-item"> No Item found.</li>}
     </ul>
   );

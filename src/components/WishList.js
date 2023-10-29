@@ -77,8 +77,12 @@ export default (props)=>{
       }
 
       useEffect(() => {
-        console.log(JSON.parse(localStorage.getItem('items')));
-        setItems( JSON.parse(localStorage.getItem('items')));
+
+        let retrivedIitems = JSON.parse(localStorage.getItem('items'));
+
+        if(!retrivedIitems) { retrivedIitems = [];}
+
+        setItems(retrivedIitems );
       }, []);
 
     return (
