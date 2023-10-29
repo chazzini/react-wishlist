@@ -1,24 +1,23 @@
-import logo from './logo.svg';
+
 import './App.css';
+import React from 'react'
+import WishList from './components/WishList';
+
+
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className="row text-center text-white mb-5">
+        <div className="col-lg-7 mx-auto">
+          <h1 className="display-4">My Personal Whishlist</h1>
+          <p className="lead mb-0">List of items I want to purchase.</p>
+        </div>
+      </div>
+      <WishList />
+      
+    </>
   );
 }
 
