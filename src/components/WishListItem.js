@@ -26,7 +26,7 @@ import PropType from 'prop-types';
                 <FontAwesomeIcon icon={faCancel} style={{
                         fontSize:"1rem",color:"white",
                     }} />
-                </button>
+                </button> &nbsp;
                     <a href="{item.link}" target="_blank" className="btn btn-dark">
                     <FontAwesomeIcon icon={faEye} style={{
                         fontSize:"1rem",color:"white",

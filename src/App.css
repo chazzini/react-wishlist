@@ -9,3 +9,6 @@ body {
 .text-gray {
   color: #aaa;
 }
+.modal-footer {
+  text-align: left;
+  }
